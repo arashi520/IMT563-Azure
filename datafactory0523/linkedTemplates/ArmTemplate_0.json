@@ -1,0 +1,122 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "datafactory0523"
+		},
+		"projectStorageLink1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'projectStorageLink1'"
+		},
+		"BatchLink563_accessKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessKey' of 'BatchLink563'"
+		},
+		"BatchLink563_properties_typeProperties_batchUri": {
+			"type": "string",
+			"defaultValue": "https://batchaccount1.westus2.batch.azure.com"
+		},
+		"BatchLink563_properties_typeProperties_poolName": {
+			"type": "string",
+			"defaultValue": "563-pool"
+		},
+		"BatchLink563_properties_typeProperties_accountName": {
+			"type": "string",
+			"defaultValue": "batchaccount1"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/projectStorageLink1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "beauty category",
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('projectStorageLink1_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/BatchLink563')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBatch",
+				"typeProperties": {
+					"batchUri": "[parameters('BatchLink563_properties_typeProperties_batchUri')]",
+					"poolName": "[parameters('BatchLink563_properties_typeProperties_poolName')]",
+					"accountName": "[parameters('BatchLink563_properties_typeProperties_accountName')]",
+					"linkedServiceName": {
+						"referenceName": "projectStorageLink1",
+						"type": "LinkedServiceReference"
+					},
+					"accessKey": {
+						"type": "SecureString",
+						"value": "[parameters('BatchLink563_accessKey')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/projectStorageLink1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline563')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "pipeline_563",
+						"description": "beauty",
+						"type": "Custom",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"command": "python data_transformation.py",
+							"resourceLinkedService": {
+								"referenceName": "projectStorageLink1",
+								"type": "LinkedServiceReference"
+							},
+							"folderPath": "beautyreviews",
+							"referenceObjects": {
+								"linkedServices": [],
+								"datasets": []
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "BatchLink563",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/projectStorageLink1')]",
+				"[concat(variables('factoryId'), '/linkedServices/BatchLink563')]"
+			]
+		}
+	]
+}
