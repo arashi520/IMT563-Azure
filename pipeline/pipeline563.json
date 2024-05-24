@@ -1,0 +1,38 @@
+{
+	"name": "pipeline563",
+	"properties": {
+		"activities": [
+			{
+				"name": "pipeline_563",
+				"description": "beauty",
+				"type": "Custom",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"command": "python data_transformation.py",
+					"resourceLinkedService": {
+						"referenceName": "projectStorageLink1",
+						"type": "LinkedServiceReference"
+					},
+					"folderPath": "beautyreviews",
+					"referenceObjects": {
+						"linkedServices": [],
+						"datasets": []
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "BatchLink563",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": []
+	}
+}
