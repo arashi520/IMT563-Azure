@@ -16,12 +16,12 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"command": "python3 beautyreviews/data_transformation.py",
+					"command": "python3 data_transformation.py",
 					"resourceLinkedService": {
-						"referenceName": "projectStorageLink1",
+						"referenceName": "projectStorage2east",
 						"type": "LinkedServiceReference"
 					},
-					"folderPath": "beautyreviews",
+					"folderPath": "input",
 					"referenceObjects": {
 						"linkedServices": [],
 						"datasets": []
