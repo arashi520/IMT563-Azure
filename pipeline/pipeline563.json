@@ -16,7 +16,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"command": "python3 data_transformation.py",
+					"command": "python3 beautyreviews/data_transformation.py",
 					"resourceLinkedService": {
 						"referenceName": "projectStorageLink1",
 						"type": "LinkedServiceReference"
@@ -28,7 +28,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "BatchLink563",
+					"referenceName": "Batchlink563east",
 					"type": "LinkedServiceReference"
 				}
 			}
