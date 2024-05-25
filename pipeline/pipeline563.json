@@ -16,7 +16,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"command": "python data_transformation.py",
+					"command": "python3 data_transformation.py",
 					"resourceLinkedService": {
 						"referenceName": "projectStorageLink1",
 						"type": "LinkedServiceReference"
