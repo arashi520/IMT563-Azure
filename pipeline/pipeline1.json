@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "Copy All Beauty Data",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -41,6 +41,49 @@
 				"outputs": [
 					{
 						"referenceName": "CosmosDbNoSqlContainer1",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy Meta All Beauty Data - Documen DB",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "CosmosDbSqlApiSink",
+						"writeBehavior": "insert"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "meta_All_Beauty",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "CosmosDbNoSqlContainer2",
 						"type": "DatasetReference"
 					}
 				]

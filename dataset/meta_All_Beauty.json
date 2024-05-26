@@ -1,0 +1,144 @@
+{
+	"name": "meta_All_Beauty",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "meta_All_Beauty.jsonl",
+				"container": "beautyreviews"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"main_category": {
+					"type": "string"
+				},
+				"title": {
+					"type": "string"
+				},
+				"average_rating": {
+					"type": "number"
+				},
+				"rating_number": {
+					"type": "integer"
+				},
+				"features": {
+					"type": "array"
+				},
+				"description": {
+					"type": "array"
+				},
+				"price": {
+					"type": "number"
+				},
+				"images": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"thumb": {
+								"type": "string"
+							},
+							"large": {
+								"type": "string"
+							},
+							"variant": {
+								"type": "string"
+							},
+							"hi_res": {
+								"type": "null"
+							}
+						}
+					}
+				},
+				"videos": {
+					"type": "array"
+				},
+				"store": {
+					"type": "string"
+				},
+				"categories": {
+					"type": "array"
+				},
+				"details": {
+					"type": "object",
+					"properties": {
+						"Package Dimensions": {
+							"type": "string"
+						},
+						"UPC": {
+							"type": "string"
+						},
+						"Item Form": {
+							"type": "string"
+						},
+						"Skin Type": {
+							"type": "string"
+						},
+						"Brand": {
+							"type": "string"
+						},
+						"Age Range (Description)": {
+							"type": "string"
+						},
+						"Unit Count": {
+							"type": "string"
+						},
+						"Is Discontinued By Manufacturer": {
+							"type": "string"
+						},
+						"Item model number": {
+							"type": "string"
+						},
+						"Manufacturer": {
+							"type": "string"
+						},
+						"Finish Type": {
+							"type": "string"
+						},
+						"Product Benefits": {
+							"type": "string"
+						},
+						"Color": {
+							"type": "string"
+						},
+						"Size": {
+							"type": "string"
+						},
+						"Material": {
+							"type": "string"
+						},
+						"Style": {
+							"type": "string"
+						},
+						"Product Dimensions": {
+							"type": "string"
+						},
+						"Number of Items": {
+							"type": "string"
+						},
+						"Inner Material": {
+							"type": "string"
+						},
+						"Item Volume": {
+							"type": "string"
+						}
+					}
+				},
+				"parent_asin": {
+					"type": "string"
+				},
+				"bought_together": {
+					"type": "null"
+				}
+			}
+		}
+	}
+}
