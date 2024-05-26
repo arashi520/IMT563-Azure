@@ -1,0 +1,53 @@
+{
+	"name": "All_Beauty",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "All_Beauty.jsonl",
+				"container": "beautyreviews"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"rating": {
+					"type": "number"
+				},
+				"title": {
+					"type": "string"
+				},
+				"text": {
+					"type": "string"
+				},
+				"images": {
+					"type": "array"
+				},
+				"asin": {
+					"type": "string"
+				},
+				"parent_asin": {
+					"type": "string"
+				},
+				"user_id": {
+					"type": "string"
+				},
+				"timestamp": {
+					"type": "integer"
+				},
+				"helpful_vote": {
+					"type": "integer"
+				},
+				"verified_purchase": {
+					"type": "boolean"
+				}
+			}
+		}
+	}
+}
