@@ -9,7 +9,7 @@
 		"type": "CosmosDbSqlApiCollection",
 		"schema": {},
 		"typeProperties": {
-			"collectionName": "documentContainer"
+			"collectionName": "All_Beauty"
 		}
 	}
 }
