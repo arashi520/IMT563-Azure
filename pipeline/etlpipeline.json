@@ -1,0 +1,38 @@
+{
+	"name": "etlpipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "etl-pipeline",
+				"description": "all beauty etl",
+				"type": "Custom",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"command": "python3 data_transformation.py",
+					"resourceLinkedService": {
+						"referenceName": "projectStorage2east",
+						"type": "LinkedServiceReference"
+					},
+					"folderPath": "input",
+					"referenceObjects": {
+						"linkedServices": [],
+						"datasets": []
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "Batchlink563east",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": []
+	}
+}
